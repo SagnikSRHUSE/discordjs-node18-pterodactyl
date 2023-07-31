@@ -42,6 +42,15 @@ RUN npm install -g discord.js \
     && npm install -g ffmpeg \
     && npm install -g sodium
 
+# Install misc. dependencies
+RUN apt-get install -y libnss3 \
+    libnspr4 \
+    libatk1.0-0 \
+    libatk-bridge2.0-0 \
+    libcups2 \
+    libatspi2.0-0 \
+    libxcomposite1
+
 COPY ./entrypoint.sh /entrypoint.sh
 
 CMD ["/bin/bash", "/entrypoint.sh"]
