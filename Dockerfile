@@ -16,6 +16,15 @@ RUN apt-get update \
     && apt-get -y install sqlite3 libsqlite3-dev \
     && useradd -m -d /home/container container
 
+# Install misc. dependencies
+RUN apt-get install -y libnss3 \
+    libnspr4 \
+    libatk1.0-0 \
+    libatk-bridge2.0-0 \
+    libcups2 \
+    libatspi2.0-0 \
+    libxcomposite1
+
 # Ensure UTF-8
 RUN sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen \
     && locale-gen
@@ -41,15 +50,6 @@ RUN npm install -g discord.js \
     && npm install -g utf-8-validate \
     && npm install -g ffmpeg \
     && npm install -g sodium
-
-# Install misc. dependencies
-RUN apt-get install -y libnss3 \
-    libnspr4 \
-    libatk1.0-0 \
-    libatk-bridge2.0-0 \
-    libcups2 \
-    libatspi2.0-0 \
-    libxcomposite1
 
 COPY ./entrypoint.sh /entrypoint.sh
 
