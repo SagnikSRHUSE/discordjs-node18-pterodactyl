@@ -23,7 +23,8 @@ RUN apt-get install -y libnss3 \
     libatk-bridge2.0-0 \
     libcups2 \
     libatspi2.0-0 \
-    libxcomposite1
+    libxcomposite1 \
+    libxdamage1
 
 # Ensure UTF-8
 RUN sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen \
